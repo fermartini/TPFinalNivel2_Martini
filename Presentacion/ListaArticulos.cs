@@ -201,8 +201,9 @@ namespace Presentacion
 
                     ArticuloDetalles detalles = new ArticuloDetalles(seleccionado);
                     detalles.ShowDialog();
-                    
+                    lblPrecio.Text = seleccionado.Precio.ToString() + ",00";
                     int id = seleccionado.Id;
+                    cargarImagen(seleccionado.Imagen);
                     foreach (DataGridViewRow fila in dgvArticulos.Rows)
                     {
                         int idNuevo = (int)fila.Cells["ID"].Value;
@@ -210,7 +211,7 @@ namespace Presentacion
                             fila.Selected = true;
                             
                     }
-                    cargarImagen(seleccionado.Imagen);
+                    
                 }
 
             }
@@ -219,7 +220,7 @@ namespace Presentacion
                 Marca seleccionado = (Marca)dgvArticulos.CurrentRow.DataBoundItem;
                 MarcaCategoriaDetalle detalles = new MarcaCategoriaDetalle(seleccionado, 1);
                 detalles.ShowDialog();
-
+                
                 int id = seleccionado.Id;
                 foreach (DataGridViewRow fila in dgvArticulos.Rows)
                 {
