@@ -116,5 +116,14 @@ namespace Presentacion
             tbxBuscar.Visible = false;
 
         }
+
+
+        //CERRAR FORM ACTIVO
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Inicio inicio = new Inicio();
+            abrirFormulario(inicio);
+            inicio.Close();
+        }
     }
 }
