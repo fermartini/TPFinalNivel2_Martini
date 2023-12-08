@@ -127,6 +127,7 @@ namespace Presentacion
         {
             
             cargar();
+            
             dgvArticulos.Columns[0].Width = 75;          
             
             cbxOrdenar.SelectedIndex = 0;
@@ -143,10 +144,16 @@ namespace Presentacion
         {
             if (listaDeArticulos.Count > 0)
             {
-                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                ArticuloDetalles detalles = new ArticuloDetalles(seleccionado, 1);
+                if (!(validarSeleccion()))
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    ArticuloDetalles detalles = new ArticuloDetalles(seleccionado, 1);
 
-                detalles.ShowDialog();
+                    detalles.ShowDialog();
+                }
+                    
+                
+                
             }
 
 
@@ -165,7 +172,7 @@ namespace Presentacion
                     ArticuloDetalles detalles = new ArticuloDetalles();
                     detalles.ShowDialog();
                     cargar();
-                
+                    
 
             }
             else if (categoria == null)
@@ -194,13 +201,14 @@ namespace Presentacion
 
                     ArticuloDetalles detalles = new ArticuloDetalles(seleccionado);
                     detalles.ShowDialog();
-                    cargar();
+                    
                     int id = seleccionado.Id;
                     foreach (DataGridViewRow fila in dgvArticulos.Rows)
                     {
                         int idNuevo = (int)fila.Cells["ID"].Value;
                         if (idNuevo == id)
                             fila.Selected = true;
+                            
                     }
                     cargarImagen(seleccionado.Imagen);
                 }
@@ -211,7 +219,7 @@ namespace Presentacion
                 Marca seleccionado = (Marca)dgvArticulos.CurrentRow.DataBoundItem;
                 MarcaCategoriaDetalle detalles = new MarcaCategoriaDetalle(seleccionado, 1);
                 detalles.ShowDialog();
-                cargar();
+
                 int id = seleccionado.Id;
                 foreach (DataGridViewRow fila in dgvArticulos.Rows)
                 {
@@ -226,7 +234,7 @@ namespace Presentacion
                 MarcaCategoriaDetalle detalles = new MarcaCategoriaDetalle(seleccionado, 1);
                 
                 detalles.ShowDialog();
-                cargar();
+
                 int id = seleccionado.Id;
                 foreach (DataGridViewRow fila in dgvArticulos.Rows)
                 {
@@ -269,8 +277,7 @@ namespace Presentacion
                     string atributo = cbxAtributo.SelectedItem.ToString();
                     string criterio = cbxOrdenar.SelectedItem.ToString();
                     string filtro = txtFiltro.Text;
-
-                    if(validarFiltro())
+                    if (validarFiltro())
                         txtFiltro.BackColor = Color.Red;
                     else
                     {
@@ -347,29 +354,7 @@ namespace Presentacion
         
         
         
-        //EVENTO PARA CAMBIAR IMAGEN    
-        private void dgvArticulos_Click(object sender, EventArgs e)
-        {
-            if (marca == null && categoria == null)
-            {
-                if (listaDeArticulos.Count > 0)
-                {
-                    try
-                    {
-                        Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                        cargarImagen(seleccionado.Imagen);
-                        lblPrecio.Text = seleccionado.Precio.ToString("0.00");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("No hay items en la grilla");
-                    }
-                   
-                }
-
-            }
-        }
-
+ 
         //FUNCION CARGAR IMAGEN DE BBDD
         private void cargarImagen(string imagen)
         {
@@ -424,6 +409,33 @@ namespace Presentacion
             return true;
         }
 
-        
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!(validarSeleccion()))
+            {
+                if (!(validarSeleccion()))
+                {
+                    if (marca == null && categoria == null)
+                    {
+                        if (listaDeArticulos.Count > 0)
+                        {
+                            try
+                            {
+                                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                                cargarImagen(seleccionado.Imagen);
+                                lblPrecio.Text = seleccionado.Precio.ToString("0.00");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("No hay items en la grilla");
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+        }
     }
 }

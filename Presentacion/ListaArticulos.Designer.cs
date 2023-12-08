@@ -205,6 +205,7 @@
             // lblPrecioTexto
             // 
             this.lblPrecioTexto.AutoSize = true;
+            this.lblPrecioTexto.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblPrecioTexto.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioTexto.ForeColor = System.Drawing.Color.White;
             this.lblPrecioTexto.Location = new System.Drawing.Point(387, 420);
@@ -257,7 +258,7 @@
             this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.ColumnHeadersHeight = 75;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvArticulos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dgvArticulos.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -286,7 +287,7 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(726, 332);
             this.dgvArticulos.TabIndex = 12;
-            this.dgvArticulos.Click += new System.EventHandler(this.dgvArticulos_Click);
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnEliminar
             // 

@@ -39,30 +39,33 @@ namespace Presentacion
         //CARGAR DATOS
         private void MarcaCategoriaDetalle_Load(object sender, EventArgs e)
         {
-            if (marca != null && modificareliminar == 1)
+            if (marca != null)
             {
                 lblId.Text = marca.Id.ToString();
                 txtCodigo.Text = marca.Descripcion;
-                btnAgregar.Visible = false;
-                
+                lblCodigoDetalle.Text = "MARCA:";
+                if(modificareliminar == 1)
+                    btnAgregar.Visible = false;
+                if(modificareliminar != 1)
+                {
+                    lblId.Text = ultimoId(1).ToString();
+                    btnModificar.Visible = false;
+                }
+                    
+
             }
-            else if(marca != null && modificareliminar == 2)
-            {
-                lblId.Text = ultimoId(1).ToString();
-                txtCodigo.Text = marca.Descripcion;
-                btnModificar.Visible = false;
-            }
-            else if (modificareliminar == 1)
+            else 
             {
                 lblId.Text = categoria.Id.ToString();
                 txtCodigo.Text = categoria.Descripcion;
-                btnAgregar.Visible = false;
-            }
-            else
-            {
-                lblId.Text = ultimoId(2).ToString();
-                txtCodigo.Text = categoria.Descripcion;
-                btnModificar.Visible = false;
+                if (modificareliminar == 1)
+                    btnAgregar.Visible = false;
+                if (modificareliminar != 1)
+                {
+                    lblId.Text = ultimoId(2).ToString();
+                    btnModificar.Visible = false;
+                }
+                    
             }
         }
 
@@ -227,6 +230,6 @@ namespace Presentacion
             return false;
         }
 
-        
+       
     }
 }

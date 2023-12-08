@@ -15,6 +15,7 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Configuration;
 using System.Drawing.Text;
+using System.Text.RegularExpressions;
 
 namespace Presentacion
 {
