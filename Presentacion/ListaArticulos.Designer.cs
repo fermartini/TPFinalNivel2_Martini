@@ -95,7 +95,7 @@
             this.btnFiltro.Location = new System.Drawing.Point(644, 4);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(94, 33);
-            this.btnFiltro.TabIndex = 16;
+            this.btnFiltro.TabIndex = 3;
             this.btnFiltro.Text = "FILTRAR";
             this.btnFiltro.UseVisualStyleBackColor = false;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
@@ -105,7 +105,7 @@
             this.txtFiltro.Location = new System.Drawing.Point(504, 8);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(132, 21);
-            this.txtFiltro.TabIndex = 15;
+            this.txtFiltro.TabIndex = 2;
             // 
             // lblFiltro
             // 
@@ -125,7 +125,7 @@
             this.cbxOrdenar.Location = new System.Drawing.Point(327, 6);
             this.cbxOrdenar.Name = "cbxOrdenar";
             this.cbxOrdenar.Size = new System.Drawing.Size(121, 24);
-            this.cbxOrdenar.TabIndex = 13;
+            this.cbxOrdenar.TabIndex = 1;
             // 
             // lblOrdernar
             // 
@@ -145,7 +145,7 @@
             this.cbxAtributo.Location = new System.Drawing.Point(122, 6);
             this.cbxAtributo.Name = "cbxAtributo";
             this.cbxAtributo.Size = new System.Drawing.Size(121, 24);
-            this.cbxAtributo.TabIndex = 11;
+            this.cbxAtributo.TabIndex = 0;
             this.cbxAtributo.SelectedIndexChanged += new System.EventHandler(this.cbxAtributo_SelectedIndexChanged);
             // 
             // lblAtributo
@@ -175,7 +175,7 @@
             this.btnVerDetalles.Name = "btnVerDetalles";
             this.btnVerDetalles.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnVerDetalles.Size = new System.Drawing.Size(187, 61);
-            this.btnVerDetalles.TabIndex = 9;
+            this.btnVerDetalles.TabIndex = 4;
             this.btnVerDetalles.Text = "VER DETALLES";
             this.btnVerDetalles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVerDetalles.UseVisualStyleBackColor = false;
@@ -285,7 +285,7 @@
             this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(726, 332);
-            this.dgvArticulos.TabIndex = 4;
+            this.dgvArticulos.TabIndex = 12;
             this.dgvArticulos.Click += new System.EventHandler(this.dgvArticulos_Click);
             // 
             // btnEliminar

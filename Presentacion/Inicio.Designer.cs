@@ -70,7 +70,7 @@
             this.tbxBuscar.Location = new System.Drawing.Point(71, 358);
             this.tbxBuscar.Name = "tbxBuscar";
             this.tbxBuscar.Size = new System.Drawing.Size(176, 35);
-            this.tbxBuscar.TabIndex = 6;
+            this.tbxBuscar.TabIndex = 4;
             this.tbxBuscar.TextChanged += new System.EventHandler(this.tbxBuscar_TextChanged);
             this.tbxBuscar.Leave += new System.EventHandler(this.tbxBuscar_Leave);
             // 
@@ -110,7 +110,7 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnBuscar.Size = new System.Drawing.Size(250, 67);
-            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "BUSCAR ARTICULO";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -131,7 +131,7 @@
             this.btnCategoria.Name = "btnCategoria";
             this.btnCategoria.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnCategoria.Size = new System.Drawing.Size(250, 67);
-            this.btnCategoria.TabIndex = 3;
+            this.btnCategoria.TabIndex = 2;
             this.btnCategoria.Text = "CATEGORIAS";
             this.btnCategoria.UseVisualStyleBackColor = true;
             this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
@@ -152,7 +152,7 @@
             this.btnMarca.Name = "btnMarca";
             this.btnMarca.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnMarca.Size = new System.Drawing.Size(250, 67);
-            this.btnMarca.TabIndex = 2;
+            this.btnMarca.TabIndex = 1;
             this.btnMarca.Text = "MARCAS";
             this.btnMarca.UseVisualStyleBackColor = true;
             this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
@@ -173,7 +173,7 @@
             this.btnArticulo.Name = "btnArticulo";
             this.btnArticulo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnArticulo.Size = new System.Drawing.Size(250, 67);
-            this.btnArticulo.TabIndex = 1;
+            this.btnArticulo.TabIndex = 0;
             this.btnArticulo.Text = "ARTICULOS";
             this.btnArticulo.UseVisualStyleBackColor = true;
             this.btnArticulo.Click += new System.EventHandler(this.btnArticulo_Click);

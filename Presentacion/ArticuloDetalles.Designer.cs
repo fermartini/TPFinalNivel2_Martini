@@ -92,7 +92,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.btnEliminar.Size = new System.Drawing.Size(250, 100);
-            this.btnEliminar.TabIndex = 9;
+            this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -113,7 +113,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.btnModificar.Size = new System.Drawing.Size(250, 100);
-            this.btnModificar.TabIndex = 8;
+            this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "MODIFICAR";
             this.btnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.btnAgregar.Size = new System.Drawing.Size(250, 100);
-            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "AGREGAR";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.btnSalirArticulo.Name = "btnSalirArticulo";
             this.btnSalirArticulo.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.btnSalirArticulo.Size = new System.Drawing.Size(250, 100);
-            this.btnSalirArticulo.TabIndex = 6;
+            this.btnSalirArticulo.TabIndex = 3;
             this.btnSalirArticulo.Text = "SALIR";
             this.btnSalirArticulo.UseVisualStyleBackColor = true;
             this.btnSalirArticulo.Click += new System.EventHandler(this.btnSalirArticulo_Click);
@@ -212,7 +212,7 @@
             this.btnAgregarImagen.Location = new System.Drawing.Point(408, 298);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(86, 27);
-            this.btnAgregarImagen.TabIndex = 9;
+            this.btnAgregarImagen.TabIndex = 7;
             this.btnAgregarImagen.Text = "Adjuntar";
             this.btnAgregarImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarImagen.UseVisualStyleBackColor = false;
@@ -225,7 +225,7 @@
             this.txtCategoria.Location = new System.Drawing.Point(184, 228);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(310, 28);
-            this.txtCategoria.TabIndex = 25;
+            this.txtCategoria.TabIndex = 4;
             // 
             // txtMarca
             // 
@@ -234,7 +234,7 @@
             this.txtMarca.Location = new System.Drawing.Point(184, 190);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(310, 28);
-            this.txtMarca.TabIndex = 24;
+            this.txtMarca.TabIndex = 3;
             // 
             // txtImagen
             // 
@@ -242,7 +242,7 @@
             this.txtImagen.Location = new System.Drawing.Point(184, 299);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(218, 26);
-            this.txtImagen.TabIndex = 23;
+            this.txtImagen.TabIndex = 6;
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // lblImagen
@@ -262,7 +262,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(184, 266);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(310, 26);
-            this.txtPrecio.TabIndex = 21;
+            this.txtPrecio.TabIndex = 5;
             // 
             // txtDetalle
             // 
@@ -270,7 +270,7 @@
             this.txtDetalle.Location = new System.Drawing.Point(184, 147);
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(310, 26);
-            this.txtDetalle.TabIndex = 18;
+            this.txtDetalle.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -278,7 +278,7 @@
             this.txtNombre.Location = new System.Drawing.Point(184, 107);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(310, 26);
-            this.txtNombre.TabIndex = 17;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -286,7 +286,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(184, 67);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(310, 26);
-            this.txtCodigo.TabIndex = 16;
+            this.txtCodigo.TabIndex = 0;
             // 
             // pbxDetalleImagen
             // 
