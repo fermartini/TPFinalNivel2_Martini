@@ -90,6 +90,12 @@ namespace Presentacion
                     return;
 
                 }
+                else if (contarCaracteres(txtCodigo.Text))
+                {
+                    txtCodigo.BackColor = Color.Blue;
+                    MessageBox.Show("Los campos conn FONDO AZUL superan la cantidad de caracteres permitida, por favor reduzca su longitud");
+                    return;
+                }
 
                 DialogResult result = MessageBox.Show("Estas agregando una Marca nueva. Estas seguro?", "AGREGANDO", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
@@ -123,6 +129,14 @@ namespace Presentacion
                     return;
 
                 }
+                else if (contarCaracteres(txtCodigo.Text))
+                {
+                    txtCodigo.BackColor = Color.Blue;
+                    MessageBox.Show("Los campos conn FONDO AZUL superan la cantidad de caracteres permitida, por favor reduzca su longitud");
+                    return;
+                }
+                    
+
                 DialogResult result = MessageBox.Show($"Estas modificando la siguiente Marca: {marca.Descripcion}. Estas seguro?", "MODIFICANDO", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
                     tomarDatosMarca(marcaNegocio, 0);
@@ -240,6 +254,16 @@ namespace Presentacion
             return false;
         }
 
-       
+
+
+
+        private bool contarCaracteres(string a)
+        {
+            if (a.Length > 50)
+                return true;
+            return false;
+        }
+
+
     }
 }
