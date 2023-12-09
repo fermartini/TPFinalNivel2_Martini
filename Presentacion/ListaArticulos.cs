@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -48,10 +49,11 @@ namespace Presentacion
 
         
         //FUNCIONES AL ABRIR FORMULARIO
-        private void cargar()
+        private void cargar(int a)
         {
+
             //CARGA ARTICULOS
-            if (marca == null && categoria == null)
+            if (a == 1)
             {
                 ArticuloNegocio articulo = new ArticuloNegocio();
                 cbxAtributo.Items.Clear();
@@ -73,23 +75,18 @@ namespace Presentacion
                 dgvArticulos.Columns[0].Visible = false;
                 dgvArticulos.Columns[6].Visible = false;
                 dgvArticulos.Columns[7].Visible = false;
-                if(listaDeArticulos.Count > 0)
+                if (listaDeArticulos.Count > 0)
                 {
                     cargarImagen(listaDeArticulos[0].Imagen);
                     lblPrecio.Text = listaDeArticulos[0].Precio.ToString("0.00");
-                    
+
                 }
-                dgvArticulos.Columns[1].Width = 50;
-                dgvArticulos.Columns[2].Width = 100;
-                dgvArticulos.Columns[3].Width = 300;
-                dgvArticulos.Columns[4].Width = 100;
-                dgvArticulos.Columns[5].Width = 100;
 
             }
             //CARGAR MARCA
-            else if (categoria == null)
+            else if (a == 2)
             {
-                
+
                 dgvArticulos.Height = 522;
                 MarcaNegocio marca = new MarcaNegocio();
                 cbxAtributo.Items.Add("Descripcion");
@@ -107,7 +104,7 @@ namespace Presentacion
             }
             //CARGAR CATEGORIA
             else
-            {                
+            {
                 dgvArticulos.Height = 522;
                 CategoriaNegocio categoria = new CategoriaNegocio();
                 cbxAtributo.Items.Add("Descripcion");
@@ -125,13 +122,17 @@ namespace Presentacion
         }
         private void ListaArticulos_Load(object sender, EventArgs e)
         {
-            
-            cargar();
-            
-            dgvArticulos.Columns[0].Width = 75;          
-            
-            cbxOrdenar.SelectedIndex = 0;
+            if (marca != null)
+                cargar(2);
+            else if (categoria != null)
+                cargar(3);
+            else
+            {
+                cargar(1);
+            }                
 
+            dgvArticulos.Columns[0].Width = 50;
+            cbxOrdenar.SelectedIndex = 0;
         }
         
      
@@ -171,7 +172,7 @@ namespace Presentacion
                 
                     ArticuloDetalles detalles = new ArticuloDetalles();
                     detalles.ShowDialog();
-                    cargar();
+                    cargar(1);
                     
 
             }
@@ -179,13 +180,13 @@ namespace Presentacion
             {
                 MarcaCategoriaDetalle detalles = new MarcaCategoriaDetalle(new Marca(), 2);
                 detalles.ShowDialog();
-                cargar();
+                cargar(2);
             }
             else
             {
                 MarcaCategoriaDetalle detalles = new MarcaCategoriaDetalle(new Categoria(), 2);
                 detalles.ShowDialog();
-                cargar();
+                cargar(3);
             }
         }
 
@@ -200,8 +201,13 @@ namespace Presentacion
                     Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
                     ArticuloDetalles detalles = new ArticuloDetalles(seleccionado);
+                    
+                    string precio = seleccionado.Precio.ToString();
+
                     detalles.ShowDialog();
-                    lblPrecio.Text = seleccionado.Precio.ToString() + ",00";
+
+                    if(precio != seleccionado.Precio.ToString())
+                        lblPrecio.Text = seleccionado.Precio.ToString() + ",00";
                     int id = seleccionado.Id;
                     cargarImagen(seleccionado.Imagen);
                     foreach (DataGridViewRow fila in dgvArticulos.Rows)
@@ -258,7 +264,7 @@ namespace Presentacion
                     Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                     ArticuloDetalles detalles = new ArticuloDetalles(seleccionado, 2);
                     detalles.ShowDialog();
-                    cargar();
+                    cargar(1);
                 }
 
 

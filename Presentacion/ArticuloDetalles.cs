@@ -64,6 +64,7 @@ namespace Presentacion
             txtCategoria.ValueMember = "id";
             txtCategoria.DisplayMember = "Descripcion";
             btnEliminar.Visible = false;
+            txtCodigo.Select();
             if (articulo != null) {                
 
                 if (detalle == 1)
@@ -87,6 +88,7 @@ namespace Presentacion
                     txtImagen.Text = articulo.Imagen;
                     agregarImg(articulo.Imagen);
                     btnAgregar.Visible = false;
+                    lineaId.Visible = false;
                 }
             }
            
@@ -95,6 +97,7 @@ namespace Presentacion
                 btnAgregar.Visible = true;
                 btnModificar.Visible = false;
                 lblDetalleTextId.Text = ultimoId().ToString();
+                lineaId.Visible = false;
             }
             
 
@@ -134,13 +137,13 @@ namespace Presentacion
 
 
 
-        //FUNCION PARA AGREGAR UN ARTICULO
+        //AGREGAR UN ARTICULO
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             
                 fondoCamposObligatorios();
-                if (txtCodigo.BackColor != Color.Red && txtNombre.BackColor != Color.Red && txtPrecio.BackColor != Color.Red)
-                {
+                    if (fondoCorrecto())
+                    {
                     DialogResult result = MessageBox.Show("Estas agregando un Articulo nuevo. Estas seguro?", "AGREGANDO", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.Yes)
                     {
@@ -152,14 +155,14 @@ namespace Presentacion
                 else
                     return;      
         }
-        //MODIFICAMOS EL ARTICULO
+        //MODIFICAR UN ARTICULO
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            
+                
                 fondoCamposObligatorios();
-                if (txtCodigo.BackColor != Color.Red && txtNombre.BackColor != Color.Red && txtPrecio.BackColor != Color.Red)
+                if (fondoCorrecto())
                 {
-                    DialogResult result = MessageBox.Show($"Estas modificando e; siguiente Articulo: {articulo.Nombre}. Estas seguro?", "MODIFICANDO", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    DialogResult result = MessageBox.Show($"Estas modificando {articulo.Nombre.ToUpper()}. Estas seguro?", "MODIFICANDO", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.Yes)
                         tomarDatosNegocio(new ArticuloNegocio(), 0);
                 }
@@ -167,7 +170,23 @@ namespace Presentacion
                     return;
            
         }
+        //ELIMINAR UN ARTICULO
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
 
+            DialogResult result = MessageBox.Show($"Estas eliminado {articulo.Nombre.ToUpper()}. Estas seguro?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                negocio.eliminar(articulo);
+                MessageBox.Show("SE ELIMINO CON EXITO");
+            }
+            Close();
+
+
+
+        }
 
 
 
@@ -195,12 +214,12 @@ namespace Presentacion
                 {
                     negocio.agregar(articulo);
                     guardarImagenLocal(archivo);
-                    MessageBox.Show("Se agrego Exitosamente");
+                    MessageBox.Show("SE AGREGO CON EXITO");
                 }
                 else
                 {
                     negocio.modificar(articulo);
-                    MessageBox.Show("Se Modifico Exitosamente");
+                    MessageBox.Show("SE MODIFICO CON EXITO");
                 }
 
 
@@ -247,6 +266,8 @@ namespace Presentacion
 
 
 
+
+
         //TOMAMOS IMAGEN LOCAL
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
@@ -274,32 +295,15 @@ namespace Presentacion
 
 
 
+
+
         //FUNCION PARA SALIR DEL FORM
         private void btnSalirArticulo_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-
-
-
-
-        //ELIMINAR SELECCIONADO
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-
-            DialogResult result = MessageBox.Show($"Estas eliminado el siguiente Articulo: {articulo.Nombre}. Estas seguro?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                negocio.eliminar(articulo);
-            }
-            Close();
-
-
-
-        }
+        
 
 
 
@@ -336,26 +340,67 @@ namespace Presentacion
         {
             if (cadena.Length == 0)
                 return true;
+
             return false;
         }
         //CAMBIAR FONDOS CAMPOS OBLIGATORIOS
         private void fondoCamposObligatorios()
         {
+            int a = 0;
             if (campoObligatorio(txtCodigo.Text))
                 txtCodigo.BackColor = Color.Red;
+            else if (contarCaracteres(txtCodigo.Text, 50))
+            {
+                txtCodigo.BackColor = Color.Blue;
+                a = 1;
+            }               
             else
-                txtCodigo.BackColor = default;
+                txtCodigo.BackColor = Color.FromArgb(60, 53, 73); 
             if (campoObligatorio(txtNombre.Text))
                 txtNombre.BackColor = Color.Red;
+            else if (contarCaracteres(txtNombre.Text, 50))
+            {
+                txtNombre.BackColor = Color.Blue;
+                a = 1;
+            }
             else
-                txtNombre.BackColor = default;
+                txtNombre.BackColor = Color.FromArgb(60, 53, 73);
+            if (contarCaracteres(txtDetalle.Text, 150))
+            {
+                txtDetalle.BackColor = Color.Blue;
+                a = 1;
+            }
+            else
+                txtDetalle.BackColor = Color.FromArgb(60, 53, 73);
             if (sinNumeros(txtPrecio.Text) || txtPrecio.Text == "")
                 txtPrecio.BackColor = Color.Red;
             else
-                txtPrecio.BackColor = default;
+                txtPrecio.BackColor = Color.FromArgb(60, 53, 73);
+            if (contarCaracteres(txtImagen.Text, 1000))
+            {
+                txtImagen.BackColor = Color.Blue;
+                a = 1;
+            }
+            else
+                txtImagen.BackColor = Color.FromArgb(60, 53, 73);
+            if (a == 1)
+                MessageBox.Show("Los campos conn FONDO AZUL superan la cantidad de caracteres permitida, por favor reduzca su longitud");
         }
 
-
+        //CONTAR CARACTERES DE CAMPOS
+        private bool contarCaracteres(string a, int i)
+        {
+            if (a.Length > i)
+                return true;
+            return false;
+        }
+        //CORRONORAR FONDO DE LOS CAMPOS
+        private bool fondoCorrecto()
+        {
+            if(txtCodigo.BackColor == Color.FromArgb(60, 53, 73) && txtNombre.BackColor == Color.FromArgb(60, 53, 73) && txtDetalle.BackColor == Color.FromArgb(60, 53, 73) && txtImagen.BackColor == Color.FromArgb(60, 53, 73) && txtPrecio.BackColor == Color.FromArgb(60, 53, 73))
+                return true;
+            return false;
+        }
 
         
     }

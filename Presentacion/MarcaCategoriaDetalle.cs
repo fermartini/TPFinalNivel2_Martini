@@ -17,6 +17,7 @@ namespace Presentacion
     {
         Marca marca = null;
         Categoria categoria = null;
+        private string campo; 
         int modificareliminar = 0;
         public MarcaCategoriaDetalle()
         {
@@ -27,18 +28,21 @@ namespace Presentacion
             InitializeComponent();
             this.marca = marca;
             this.modificareliminar = modificareliminar;
+            campo = marca.Descripcion;
         }
         public MarcaCategoriaDetalle(Categoria categoria, int modificareliminar)
         {
             InitializeComponent();
             this.categoria = categoria;
             this.modificareliminar = modificareliminar;
+            campo = categoria.Descripcion;
         }
 
 
         //CARGAR DATOS
         private void MarcaCategoriaDetalle_Load(object sender, EventArgs e)
         {
+            txtCodigo.Select();
             if (marca != null)
             {
                 lblId.Text = marca.Id.ToString();
@@ -154,12 +158,15 @@ namespace Presentacion
             if (numero == 1)
             {
                 negocio.agregar(marca);
-                MessageBox.Show("Se agrego Exitosamente");
+                MessageBox.Show("SE AGREGO CON EXITO");
             }
             else
             {
                 negocio.modificar(marca);
-                MessageBox.Show("Se modifico Exitosamente");
+                if (campo == marca.Descripcion)
+                    MessageBox.Show("NO CAMBIASTE EL CAMPO. ;)");
+                else
+                    MessageBox.Show("SE MODIFICO CON EXITO");
             }
 
             Close();
@@ -173,12 +180,15 @@ namespace Presentacion
             if (numero == 1)
             {
                 negocio.agregar(categoria);
-                MessageBox.Show("Se agrego Exitosamente");
+                MessageBox.Show("SE AGREGO CON EXITO");
             }
             else
             {
                 negocio.modificar(categoria);
-                MessageBox.Show("Se modifico Exitosamente");
+                if (campo == categoria.Descripcion)
+                    MessageBox.Show("NO CAMBIASTE EL CAMPO. ;)");
+                else
+                    MessageBox.Show("SE MODIFICO CON EXITO");
             }
 
             Close();
